@@ -1,0 +1,25 @@
+# Seguridad — NUNCA al repositorio
+.env
+*.env
+
+# Vector DB persistida
+data/chroma_db/
+data/faiss_index/
+
+# Repos clonados (pueden ser grandes)
+data/git_repos/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+Thumbs.db

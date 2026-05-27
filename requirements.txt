@@ -1,0 +1,32 @@
+# ── Core RAG ──────────────────────────────────────────────
+langchain==0.2.16
+langchain-community==0.2.16
+langchain-openai==0.1.23
+langchain-anthropic==0.1.23
+
+# ── Vector Store ───────────────────────────────────────────
+chromadb==0.5.5
+faiss-cpu==1.8.0          # alternativa local a ChromaDB
+
+# ── Embeddings ─────────────────────────────────────────────
+openai==1.43.0             # para embeddings text-embedding-3-small
+anthropic==0.34.0
+
+# ── Procesamiento de archivos ──────────────────────────────
+openpyxl==3.1.5            # Excel (.xlsx)
+lxml==5.3.0                # Draw.io XML
+beautifulsoup4==4.12.3     # parseo XML/HTML
+GitPython==3.1.43          # repositorios Git
+
+# ── UI ─────────────────────────────────────────────────────
+streamlit==1.38.0
+
+# ── Utilidades ─────────────────────────────────────────────
+python-dotenv==1.0.1       # manejo de .env
+pypdf==4.3.1               # PDFs
+tiktoken==0.7.0            # contar tokens
+
+# ── Bonus: Voz (opcional) ──────────────────────────────────
+# openai-whisper==20231117   # STT  (descomenta si usas voz)
+# gTTS==2.5.1                # TTS  (descomenta si usas voz)
+# SpeechRecognition==3.10.4  # alternativa STT
