@@ -1,0 +1,68 @@
+<mxfile host="app.diagrams.net" modified="2026-05-29T00:00:00.000Z" agent="ChatGPT" version="24.7.8" type="device">
+  <diagram id="rag-arquitectura" name="Arquitectura RAG">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="node_git" value="Repositorio Git&lt;br&gt;Código Python" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="170" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_excel" value="Excel&lt;br&gt;Diccionario de datos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="60" y="180" width="170" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_drawio" value="Draw.io&lt;br&gt;Arquitectura" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="60" y="280" width="170" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_docs" value="Markdown / PDF&lt;br&gt;Documentación" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="60" y="380" width="170" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_git_loader" value="git_loader.py&lt;br&gt;Carga código" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="310" y="80" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_excel_loader" value="excel_loader.py&lt;br&gt;Carga filas .xlsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="310" y="180" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_drawio_loader" value="drawio_loader.py&lt;br&gt;Carga nodos y relaciones" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="310" y="280" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_docs_loader" value="load_docs_folder()&lt;br&gt;Carga .md / .pdf" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="310" y="380" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_ingest" value="ingest.py&lt;br&gt;Orquesta ingesta y chunking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="220" width="200" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_chroma" value="ChromaDB&lt;br&gt;Base vectorial local" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="850" y="220" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_ui" value="Streamlit UI&lt;br&gt;Chat del usuario" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="520" width="190" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_rag" value="Motor RAG&lt;br&gt;RAGEngine / rag.py" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="520" width="190" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_llm" value="Groq LLM&lt;br&gt;Respuesta generada" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="520" width="190" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="node_answer" value="Respuesta con fuentes&lt;br&gt;source / hoja / fila / elemento" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="690" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="edge_git" value="clona / lee archivos" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_git" target="node_git_loader"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_excel" value="lee filas y headers" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_excel" target="node_excel_loader"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_drawio" value="extrae nodos y edges" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_drawio" target="node_drawio_loader"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_docs" value="extrae texto" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_docs" target="node_docs_loader"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_git_ingest" value="Document(type=code)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_git_loader" target="node_ingest"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_excel_ingest" value="Document(type=data_dictionary)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_excel_loader" target="node_ingest"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_drawio_ingest" value="Document(type=architecture_diagram)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_drawio_loader" target="node_ingest"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_docs_ingest" value="Document(type=documentation)" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_docs_loader" target="node_ingest"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_ingest_chroma" value="chunking + embeddings" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_ingest" target="node_chroma"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_ui_rag" value="envía pregunta" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_ui" target="node_rag"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_rag_chroma" value="recupera top_k contexto" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_rag" target="node_chroma"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_chroma_rag" value="devuelve documentos citables" style="endArrow=block;html=1;rounded=0;dashed=1;" edge="1" parent="1" source="node_chroma" target="node_rag"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_rag_llm" value="prompt con contexto" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_rag" target="node_llm"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_llm_answer" value="respuesta en español" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_llm" target="node_answer"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_rag_answer" value="agrega fuentes recuperadas" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="node_rag" target="node_answer"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
