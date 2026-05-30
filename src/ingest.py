@@ -17,9 +17,9 @@ from typing import List
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings
 
 from src.config import config
+from src.embeddings import build_embeddings
 from src.loaders import (
     load_git,
     load_excel_folder,
@@ -93,10 +93,7 @@ def build_vector_store(chunks: List[Document], reset: bool = False):
     persist_dir = config.CHROMA_PERSIST_DIR
     Path(persist_dir).mkdir(parents=True, exist_ok=True)
 
-    embeddings = OpenAIEmbeddings(
-        model=config.EMBEDDING_MODEL,
-        openai_api_key=config.OPENAI_API_KEY,
-    )
+    embeddings = build_embeddings()
 
     if reset:
         print("[Ingest] Reseteando vector store...")
@@ -120,7 +117,7 @@ def build_vector_store(chunks: List[Document], reset: bool = False):
 
 def run_ingestion(git_url: str = None, reset: bool = False):
     """Orquesta toda la ingesta del Día 1."""
-    config.validate()
+    config.validate_ingestion()
 
     all_documents: List[Document] = []
 
